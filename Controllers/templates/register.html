@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"> -->
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.min.css'>
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300'>
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400,700,300'>
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/tags/bootstrap-tagsinput.js"></script>
+    <script type="text/javascript" src="/static/tags/bootstrap-tagsinput-angular.js"></script>
+    <link rel="stylesheet" href="/static/tags/bootstrap-tagsinput-typeahead.css">
+    <link rel="stylesheet" href="/static/tags/bootstrap-tagsinput.css">
+
+
+    <link rel="stylesheet" href="/static/register_style.css">
+    <style>
+      #black{
+        color:black;
+        font-size: 12px;
+      }
+    </style>
+
+</head>
+
+<body>
+  <div class="signup__container">
+  <div class="container__child signup__form">
+    <form class="margin" action="/recruitment" method="post">
+  <div class="form-group">
+    <label for="name"><b>Name</b></label>
+    <input type="text" id="name" name="name" class="form-control" maxlength="30" placeholder="E.g. john doe"  required>
+  </div><br/>
+  <div class="form-group">
+    <label for="emp_id"><b>Employee id</b></label>
+    <input type="text" id="emp_id" name="emp_id" class="form-control" maxlength="10" placeholder="10 alphanumeric characters" required>
+  </div><br/>
+  <div>
+    <label for="emailaddress"><b>Email</b></label>
+    <input type="email" id="emailaddress" name="emailaddress" maxlength="50" class="form-control" placeholder="E.g. john@gmail.com" required>
+  </div><br/>
+  <div>
+    <label for="password"><b>Password</b></label>
+    <input type="password" id="password" name="password" maxlength="30" class="form-control"  placeholder="3-30 characters in length" required>
+  </div>
+  </div>
+  <div class="container__child signup__form">
+      <div class="form-group">
+        <label for="phno"><b>PHONE NO</b></label>
+        <input type="text" id="phno" name="phno" class="form-control" minlength="10" maxlength="10" placeholder="10 digits in length" required>
+      </div>
+      <div class="form-group">
+        <br/>
+        <label for="role"><b>ROLE</b></label>
+        <select name = 'role' id = 'role' required>
+            <option>Please select one</option>
+            <option value="002">Employee</option>
+            <option value="001">Manager</option>
+        </select>
+        <br/>
+      </div>
+      <div class="form-group">
+        <label for = "skills"><b>Skills</b></label>
+        <br/>
+        <input type='text' data-role="tagsinput" placeholder="For Open Source" id='open' name='open' class="form-control" >
+        <input type='text' data-role="tagsinput" placeholder="For Microsoft Tools" id='micro' name='micro' class="form-control" >
+        <input type='text' data-role="tagsinput" placeholder="For Web Technologies" id='web' name='web' class="form-control" >
+      </div>
+      <div id="f1">
+        <p id="black">{{message}}</p>
+      </div>
+      <div class="m-t-lg">
+        <ul class="list-inline">
+          <li>
+            <button type="submit" class="btn btn--form">Register</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </form>
+</div>
+
+</body>
+
+</html>

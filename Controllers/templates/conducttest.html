@@ -1,0 +1,68 @@
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <title>conduct test</title>
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
+
+    <!-- <link rel="stylesheet" href="/static/animate.css"> -->
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="/static/style1.css">
+  </head>
+  <body>
+    <div class="container">
+        <div class='testdetails' id='testdetails'>
+            <div class="login-box animated fadeInUp">
+                <div class="box-header">
+                    <h2>Setup test</h2>
+                </div>
+                <label>Employee ID</label>
+                <br/>
+                <input type="text" name='eid' id='eid' required>
+                <br/>
+                <label>Skill Name</label>
+                <br/>
+                <select name='skillname' id='skillname' required>
+                    <option value="please select an option">Please select</option>
+                    {% for skill in skills %}
+                    <option value='{{skill[0]}}'>{{skill[0]}}</option>
+                    {% endfor %}
+                </select>
+                <br/><br/><br/>
+                <button onclick="sendTestFor()" >Submit</button>
+                <br/><br/>
+          </div>
+        </div>
+      </div>
+    </body>
+    <script>
+         function sendTestFor(){
+             var testfor=document.getElementById('testdetails');
+             var http = new XMLHttpRequest();
+             var url = "/conducttestpage";
+             var eid=document.getElementById('eid').value;
+             var skillname=document.getElementById('skillname').value;
+             var params={ "eid":eid,
+                          "skillname":skillname,
+                        "status":"conducttest" };
+             params = JSON.stringify(params);
+             http.open("POST", url, true);
+             http.setRequestHeader("Content-type", "application/json");
+             http.onreadystatechange = function() {//Call a function when the state changes.
+                 if(http.readyState == 4 && http.status == 200) {
+                     message=http.responseText;
+                     if(message ==="Test reference Created"){
+                        alert(message);
+                        window.location='/conducttestpage'
+                     }
+                     else{
+                       alert(message);
+                     }
+                 }
+             }
+             http.send(params);
+         }
+        </script>
+</html>

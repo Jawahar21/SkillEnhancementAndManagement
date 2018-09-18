@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial;
+    font-size: 17px;
+}
+
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+.menu{
+    position: fixed;
+    text-align: right;
+    top: 0;
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+}
+.content {
+    position: fixed;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+.logo {
+    position: fixed;
+    top: 0;
+    padding: 10px;
+}
+
+#myBtn {
+    width: 200px;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    background: #05143d;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 2%;
+}
+
+#myBtn:hover {
+    background: #ddd;
+    color: black;
+}
+</style>
+<title>HOME</title>
+</head>
+<body>
+
+<video autoplay muted loop id="myVideo">
+  <source src="/static/videoplayback.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+<div class="logo">
+  <img id='logo' src="/static/logo_transparent.png" width="90" height="90" alt="">
+</div>
+<div class="content">
+  <h1>S.E.A.M.</h1>
+  <p>(Skill Enhancement And Management)</p>
+  <p>We believe the best way to learn is by putting your skills to use. That’s why we provide a platform to expand your skillset and put them to use.</p>
+</div>
+<div class="menu">
+  <a href="/login"><button type="button" id="myBtn">LOG IN</button></a>
+</div>
+
+</body>
+</html>

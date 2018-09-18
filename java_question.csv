@@ -1,0 +1,790 @@
+1,"class Base {
+    public void show() {
+       System.out.println(""Base::show() called"");
+    }
+}
+  
+class Derived extends Base {
+    public void show() {
+       System.out.println(""Derived::show() called"");
+    }
+}
+  
+public class Main {
+    public static void main(String[] args) {
+        Base b = new Derived();;
+        b.show();
+    }
+}",Derived::show() called,Base::show() called,Compiler Error,Runtime Error,Derived::show() called
+2,"class Base {
+    final public void show() {
+       System.out.println(""Base::show() called"");
+    }
+}
+  
+class Derived extends Base {
+    public void show() {
+       System.out.println(""Derived::show() called"");
+    }
+}
+  
+class Main {
+    public static void main(String[] args) {
+        Base b = new Derived();;
+        b.show();
+    }
+}",Base::show() called,Derived::show() called,Compiler Error,Runtime Error,Compiler Error
+3,"Which of the following is true about inheritance in Java?
+
+1) Private methods are final.
+2) Protected members are accessible within a package and 
+   inherited classes outside the package.
+3) Protected methods are final.
+4) We cannot override private methods. ","1, 2 and 4",Only 1 and 2,"1, 2 and 3","2, 3 and 4","1, 2 and 4"
+4,"class Base {
+public void Print() {
+System.out.println(""Base"");
+}
+}
+
+class Derivedextends Base {
+public void Print() {
+System.out.println(""Derived"");
+}
+}
+
+class Main{
+public static void DoPrint( Base o ) {
+o.Print();
+}
+public static void main(String[] args) {
+Base x =new Base();
+Base y =new Derived();
+Derived z =new Derived();
+DoPrint(x);
+DoPrint(y);
+DoPrint(z);
+}
+}","Base
+Derived
+Derived","Base
+Derived
+Base","Base
+Derived
+Base",Compiler Error,"Base
+Derived
+Derived"
+5,"Which of the following is true about inheritance in Java. 1) In Java all classes inherit from the Object class directly or indirectly. The Object class is root of all classes. 2) Multiple inheritance is not allowed in Java. 3) Unlike C++, there is nothing like type of inheritance in Java where we can specify whether the inheritance is protected, public or private.","1, 2 and 3",1 and 2,2 and 3,1 and 3,"1, 2 and 3"
+6,"Which of the following is/are true about packages in Java?
+1) Every class is part of some package. 
+2) All classes in a file are part of the same package. 
+3) If no package is specified, the classes in the file 
+   go into a special unnamed package 
+4) If no package is specified, a new package is created with 
+   folder name of class and the class is put in this package. ","Only 1, 2 and 3","Only 1, 2 and 4",Only 4,Only 1 and 3,"Only 1, 2 and 3"
+7,Which of the following is/are advantages of packages?,Packages avoid name clashes,"Classes, even though they are visible outside their package, can have fields visible to packages only","We can have hidden classes that are used by the packages, but not visible outside.",All of the above,All of the above
+8,"Predict the output of following Java program
+// Note static keyword after import.
+import static java.lang.System.*;
+   
+class StaticImportDemo
+{
+   public static void main(String args[])
+   {      
+        out.println(""GeeksforGeeks"");
+   }
+}",Compiler Error,Runtime Error,GeeksforGeeks,None of the above,GeeksforGeeks
+9,Which of the following is FALSE about abstract classes in Java,"If we derive an abstract class and do not implement all the abstract methods, then the derived class should also be marked as abstract using 'abstract' keyword",Abstract classes can have constructors,A class can be made abstract without any abstract method,A class can inherit from multiple abstract classes.,A class can inherit from multiple abstract classes.
+10,"Which of the following is true about interfaces in java.
+
+1) An interface can contain following type of members.
+....public, static, final fields (i.e., constants) 
+....default and static methods with bodies
+
+2) An instance of interface can be created.
+
+3) A class can implement multiple interfaces.
+
+4) Many classes can implement the same interface.","1, 3 and 4","1, 2 and 4","2, 3 and 4","1, 2, 3 and 4","1, 3 and 4"
+11,"abstract class demo
+{
+    public int a;
+    demo()
+    {
+        a = 10;
+    }
+ 
+    abstract public void set();
+     
+    abstract final public void get();
+ 
+}
+ 
+class Test extends demo
+{
+ 
+    public void set(int a)
+    {
+        this.a = a;
+    }
+ 
+    final public void get()
+    {
+        System.out.println(""a = "" + a);
+    }
+ 
+    public static void main(String[] args)
+    {
+        Test obj = new Test();
+        obj.set(20);
+        obj.get();
+    }
+}",a = 10,a = 20,Compilation error,Runtime Error,Compilation error
+12,"Predict the output of following Java program?
+class Test {
+  int i;
+} 
+class Main {
+   public static void main(String args[]) { 
+     Test t; 
+     System.out.println(t.i); 
+}  ",0,garbage value,compiler error,runtime error,
+13,"Predict the output of following Java program
+class Test {
+  int i;
+} 
+class Main {
+  public static void main(String args[]) { 
+      Test t = new Test(); 
+      System.out.println(t.i);
+   } 
+}",garbage value,0,compiler error,runtime error,
+14,"class demo
+{
+    int a, b;
+     
+    demo()
+    {
+        a = 10;
+        b = 20;
+    }
+     
+    public void print()
+    {
+        System.out.println (""a = "" + a + "" b = "" + b + ""\n"");
+    }
+}
+ 
+class Test
+{
+ 
+    public static void main(String[] args)
+    {
+        demo obj1 = new demo();
+        demo obj2 = obj1;
+ 
+        obj1.a += 1;
+        obj1.b += 1;
+ 
+        System.out.println (""values of obj1 : "");
+        obj1.print();
+        System.out.println (""values of obj2 : "");
+        obj2.print();
+ 
+    }
+}",Compile error,"values of obj1: 
+a = 11 b = 21
+values of obj2: 
+a = 11 b = 21","values of obj1: 
+a = 11 b = 21
+values of obj2: 
+a = 10 b = 20","values of obj1: 
+a = 11 b = 20
+values of obj2: 
+a = 10 b = 21","values of obj1: 
+a = 11 b = 21
+values of obj2: 
+a = 11 b = 21"
+15,"1. What is the type of variable ‘b’ and ‘d’ in the below snippet?
+int a[], b;
+int []c, d;",‘b’ and ‘d’ are int,‘b’ and ‘d’ are arrays of type int,‘b’ is int variable; ‘d’ is int array,‘d’ is int variable; ‘b’ is int array,‘b’ is int variable; ‘d’ is int array
+16,Which of these is an incorrect array declaration?,int arr[] = new int[5] ;,int [] arr = new int[5] ;,"int arr[];
+arr = new int[5];",int arr[] = int [5] new;,int arr[] = int [5] new;
+17,"What will this code print?
+
+int arr[] = new int [5];
+System.out.print(arr);",0,value stored in arr[0].,0,Garbage value,Garbage value
+18,"What is the output of below snippet?
+
+Object[] names = new String[3];
+names[0] = new Integer(0);",ArrayIndexOutOfBoundsException,ArrayStoreException,Compilation Error,Code runs successfully,ArrayStoreException
+19,Generics does not work with?,Set,List,Tree,Array,Array
+20,How to sort an array?, Array.sort(),Arrays.sort(),Collection.sort(),System.sort(),Arrays.sort()
+21,Where is array stored in memory?,heap space, stack space,heap space and stack space,first generation memory,heap space
+22,When does method overloading is determined?,At run time,At compile time, At coding time,At execution time, At compile time
+23,Which concept of Java is a way of converting real world objects in terms of class?,Polymorphism,Encapsulation,Abstraction,Inheritance,Abstraction
+24,Which concept of Java is achieved by combining methods and attribute into a class?, Encapsulation,Inheritance, Polymorphism,Abstration,Encapsulation
+25,What is it called if an object has its own lifecycle and there is no owner?,Aggregation,Composition,Encapsulation,Association,Association
+26,What is it called where object has its own lifecycle and child object cannot belong to another parent object?,Aggregation,Compostion,Encapsulation, Association,Aggregation
+27,What is it called where child object gets killed if parent object is killed?,Aggregation,Composition,Encapsulation,Association,Composition
+28,Which of these keywords is used to make a class?,class,struct, int,none of the mentioned,class
+29,Which of the following is a valid declaration of an object of class Box?,Box obj = new Box();, Box obj = new Box;,obj = new Box();,new Box obj;,Box obj = new Box();
+30,Which of these operators is used to allocate memory for an object?,malloc,alloc,new,give, new
+31,Which of these statement is incorrect?,Every class must contain a main() method,Applets do not require a main() method at all,There can be only one main() method in a program,main() method must be made public,Every class must contain a main() method
+32, Which of the following statements is correct?,Public method is accessible to all other classes in the hierarchy,Public method is accessible only to subclasses of its parent class,Public method can only be called by object of its class,Public method can be accessed by calling object of the public class,Public method is accessible to all other classes in the hierarchy
+33,"class box 
+    {
+        int width;
+        int height;
+        int length;
+    } 
+    class mainclass 
+    {
+        public static void main(String args[]) 
+        {        
+            box obj1 = new box();
+            box obj2 = new box();
+            obj1.height = 1;
+            obj1.length = 2;
+            obj1.width = 1;
+            obj2 = obj1;
+            System.out.println(obj2.height);
+        } 
+    }",1,2, Runtime error,Garbage valueGarbage value,1
+34,"class box 
+   {
+        int width;
+        int height;
+        int length;
+   } 
+    class mainclass 
+    {
+        public static void main(String args[]) 
+        {        
+            box obj = new box();
+            System.out.println(obj);
+        } 
+    }",0,1,Runtime error,classname@hashcode in hexadecimal form,classname@hashcode in hexadecimal form
+35,What is the return type of a method that does not returns any value?,int,float,void,double,void
+36,What is the process of defining more than one method in a class differentiated by method signature?,Function overriding,Function overloading,Function doubling,None of the mentioned,Function overloading
+37,Which of the following is a method having same name as that of it’s class?,finalize,delete,class,constructor,constructor
+38,Which method can be defined only once in a program?,main method, finalize method,static method,private method, main method
+39,Which of these statement is incorrect?,All object of a class are allotted memory for the all the variables defined in the class,If a function is defined public it can be accessed by object of other class by inheritation,main() method must be made public,All object of a class are allotted memory for the methods defined in the class,All object of a class are allotted memory for the methods defined in the class
+40," class equality 
+    {
+        int x;
+        int y;
+        boolean isequal()
+        {
+            return(x == y);  
+        } 
+    }    
+    class Output 
+    {
+        public static void main(String args[])
+        {
+            equality obj = new equality();
+            obj.x = 5;
+            obj.y = 5;
+            System.out.println(obj.isequal());
+        } 
+    }",FALSE, true,0,1,TRUE
+41,Which of these is not abstract?,Thread,AbstractList,List, None of the Mentioned,Thread
+42,If a class inheriting an abstract class does not define all of its function then it will be known as?,Abstract,A simple class,Static class,None of the mentioned,Abstract
+43," What is the output of this program?
+
+    class A 
+    {
+        public int i;
+        private int j;
+    }    
+    class B extends A 
+    {
+        void display() 
+        {
+            super.j = super.i + 1;
+            System.out.println(super.i + "" "" + super.j);
+        }
+    }    
+    class inheritance 
+   {
+        public static void main(String args[])
+        {
+            B obj = new B();
+            obj.i=1;
+            obj.j=2;   
+            obj.display();     
+        }
+   }",2 2,3 3,Runtime Error,Compilation Error,Compilation Error
+44,"What is the output of this program?
+
+    class A 
+    {
+        public int i;
+        public int j;
+        A() 
+       {
+            i = 1;
+            j = 2;
+        }
+    }    
+    class B extends A 
+    {
+        int a;
+        B() 
+        {
+            super();
+        } 
+    }    
+    class super_use 
+    {
+        public static void main(String args[])
+        {
+            B obj = new B();
+            System.out.println(obj.i + "" "" + obj.j)     
+        }
+   }",1 2,2 1,Runtime Error,Compilation Error,1 2
+45,"What is the output of this program?
+
+    abstract class A 
+    {
+        int i;
+        abstract void display();
+    }    
+    class B extends A 
+    {
+        int j;
+        void display() 
+        {
+            System.out.println(j);
+        }
+    }    
+    class Abstract_demo 
+    {
+        public static void main(String args[])
+        {
+            B obj = new B();
+            obj.j=2;
+            obj.display();    
+        }
+   }",0,2, Runtime Error,Compilation Error,2
+46," What is the output of this program?
+
+    class A 
+    {
+        int i;
+        void display() 
+        {
+            System.out.println(i);
+        }
+    }    
+    class B extends A 
+    {
+        int j;
+        void display() 
+        {
+            System.out.println(j);
+        }
+    }    
+    class method_overriding 
+    {
+        public static void main(String args[])
+        {
+            B obj = new B();
+            obj.i=1;
+            obj.j=2;   
+            obj.display();     
+        }
+   }",0,1,2,Compilation Error,2
+47,"What is the output of this program?
+
+    class A 
+    {
+        public int i;
+        protected int j;
+    }    
+    class B extends A 
+    {
+        int j;
+        void display() 
+        {
+            super.j = 3;
+            System.out.println(i + "" "" + j);
+        }
+    }    
+    class Output 
+    {
+        public static void main(String args[])
+        {
+            B obj = new B();
+            obj.i=1;
+            obj.j=2;   
+            obj.display();     
+        }
+   }",1 2,2 1,1 3,3 1,
+48, Which of the following keywords is used for throwing exception manually?,finally,try,throw, catch,throw
+49,Which of the following classes can catch all exceptions which cannot be caught?,RuntimeException,Error,Exception,ParentException,Exception
+50,Which of the following operators is used to generate instance of an exception which can be thrown using throw?,thrown, alloc,malloc,new, new
+51,Which of the following handles the exception when catch is not used?, finally,throw handler,default handler, java run time system, default handler
+52,Which part of code gets executed whether exception is caught or not?,finally,try,catch,throw,finally
+53,What exception thrown by parseInt() method?,ArithmeticException,ClassNotFoundException, NullPointerException,NumberFormatException,NumberFormatException
+54,Which of the following should be true of the object thrown by a thrown statement?,Should be assignable to String type,Should be assignable to Exception type,Should be assignable to Throwable type,Should be assignable to Error type,Should be assignable to Throwable type
+55,"What is the output of this program?
+
+    class exception_handling 
+    {
+        public static void main(String args[]) 
+        {
+            try 
+            {
+                int a = args.length;
+                int b = 10 / a;
+                System.out.print(a);
+                try 
+                {
+                    if (a == 1)
+                        a = a / a - a;
+                    if (a == 2) 
+                    {
+                        int []c = {1};
+                        c[8] = 9;
+                    }
+                }
+                catch (ArrayIndexOutOfBoundException e) 
+                {
+                    System.out.println(""TypeA"");
+                }
+                catch (ArithmeticException e) 
+                {
+                    System.out.println(""TypeB"");
+                }
+            }
+        }
+    }",TypeA,TypeB,Compiler Time Error, 0TypeB,Compiler Time Error
+56,"What is the output of this program?
+
+    class exception_handling 
+    {
+        public static void main(String args[]) 
+        {
+            try 
+            {
+                System.out.print(""A"");
+                throw new NullPointerException (""Hello"");
+            }
+            catch(ArithmeticException e) 
+            {
+                System.out.print(""B"");                
+            }
+        }
+    }",A,B,Hello,Runtime Exception,
+57,"What is the output of this program?
+
+    class exception_handling 
+    {
+        static void throwexception() throws ArithmeticException 
+        {        
+            System.out.print(""0"");
+            throw new ArithmeticException (""Exception"");
+        }
+        public static void main(String args[]) 
+        {
+            try 
+            {
+                throwexception();
+            }
+            catch (ArithmeticException e) 
+            {
+                System.out.println(""A"");
+            }
+        }
+    }",A,O,OA,Exception,
+58,"What is the output of this program?
+
+public class San 
+{
+    public static void main(String args[])
+    {
+        try 
+        {
+            System.out.print(""Hello world "");
+        }
+        finally 
+        {
+            System.out.println(""Finally executing "");
+        }
+    }
+}",The program will not compile because no exceptions are specified,The program will not compile because no catch clauses are specified, Hello world,Hello world Finally executing,Hello world Finally executing
+59,Which of these classes implements Set interface?,ArrayList,HashSet,LinkedList,DynamicList,HashSet
+60,Which of these method is used to add an element to the start of a LinkedList object?,add(),first(),AddFirst(),addFirst(),addFirst()
+61,Which of these method of HashSet class is used to add elements to its object?,add(), Add(),addFirst(),insert(),add()
+62,Which of these methods can be used to delete the last element in a LinkedList object?, remove(),delete(),removeLast(),deleteLast(),removeLast()
+63,Which of these method is used to change an element in a LinkedList Object?,change(), set(),redo(),add(),set()
+64,"What is the output of this program?
+
+    import java.util.*;
+    class Linkedlist 
+    {
+        public static void main(String args[]) 
+        {
+            LinkedList obj = new LinkedList();
+            obj.add(""A"");
+            obj.add(""B"");
+            obj.add(""C"");
+            obj.addFirst(""D"");
+            System.out.println(obj);
+        }
+    }","[A, B, C].","[D, B, C].","[A, B, C, D].","[D, A, B, C].","[D, A, B, C]."
+65," What is the output of this program?
+
+    import java.util.*;
+    class Linkedlist 
+    {
+        public static void main(String args[]) 
+        {
+            LinkedList obj = new LinkedList();
+            obj.add(""A"");
+            obj.add(""B"");
+            obj.add(""C"");
+            obj.removeFirst();
+            System.out.println(obj);
+        }
+    }","[A, B].","[B, C].","[A, B, C, D].","[A, B, C].","[B, C]."
+66,"What is the output of this program?
+
+    import java.util.*; 
+    class Output 
+    {
+        public static void main(String args[]) 
+        { 
+            TreeSet t = new TreeSet();
+            t.add(""3"");
+            t.add(""9"");
+            t.add(""1"");
+            t.add(""4"");
+            t.add(""8""); 
+            System.out.println(t);
+        }
+    }","[1, 3, 5, 8, 9].","[3, 4, 1, 8, 9]."," [9, 8, 4, 3, 1].","[1, 3, 4, 8, 9].","[1, 3, 4, 8, 9]."
+67,Which of these interface declares core method that all collections will have?, set,EventListner,Comparator,Collection,Collection
+68,Which of these interface handle sequences?,Set,List,Comparator,Collection,List
+69,Which of these interface is not a part of Java’s collection framework?,List,Set,SortedMap, SortedList,SortedList
+70,Which of these interface must contain a unique element?,Set,List,Array,Collection,Set
+71,"What is the output of this program?
+
+    import java.util.*;
+    class Maps 
+    {
+        public static void main(String args[]) 
+        {
+            TreeMap obj = new TreeMap();
+            obj.put(""A"", new Integer(1));
+            obj.put(""B"", new Integer(2));
+            obj.put(""C"", new Integer(3));
+            System.out.println(obj.entrySet());
+        }
+    }","[A, B, C].","[1, 2, 3]."," {A=1, B=2, C=3}","[A=1, B=2, C=3].","[A=1, B=2, C=3]."
+72,"What is the output of this program?
+
+    import java.util.*;
+    class vector 
+    {
+        public static void main(String args[]) 
+        {
+            Vector obj = new Vector(4,2);
+            obj.addElement(new Integer(3));
+            obj.addElement(new Integer(2));
+            obj.addElement(new Integer(5));
+            obj.removeAll(obj);
+            System.out.println(obj.isEmpty());
+        }
+    }",0,1,TRUE,FALSE,TRUE
+73,"What is the output of this program?
+
+    import java.util.*;
+    class Bitset 
+    {
+        public static void main(String args[]) 
+        {
+            BitSet obj = new BitSet(5);
+            for (int i = 0; i < 5; ++i)
+                obj.set(i);
+            obj.clear(2);
+            System.out.print(obj);
+        }
+    }"," {0, 1, 3, 4}","{0, 1, 2, 4}"," {0, 1, 2, 3, 4}","{0, 0, 0, 3, 4}","{0, 1, 3, 4}"
+74,Which of the following would compile without error?,int a = Math.abs(-5);,int b = Math.abs(5.0);,int c = Math.abs(5.5F);,int d = Math.abs(5L);,int a = Math.abs(-5);
+75,"Select how you would start the program to cause it to print: Arg is 2
+
+public class Myfile 
+{ 
+    public static void main (String[] args) 
+    {
+        String biz = args[1]; 
+        String baz = args[2]; 
+        String rip = args[3]; 
+        System.out.println(""Arg is "" + rip); 
+    } 
+}",java Myfile 222,java Myfile 1 2 2 3 4,java Myfile 1 3 2 2,java Myfile 0 1 2 3,java Myfile 0 1 2 3
+76,What is the name of the method used to start a thread execution?,init();,start();,run();,resume();,start();
+77,Which cannot directly cause a thread to stop executing?,Calling the SetPriority() method on a Thread object.,Calling the wait() method on an object.,Calling notify() method on an object.,Calling read() method on an InputStream object.,Calling notify() method on an object.
+78,Which of the following will directly stop the execution of a Thread?,wait(),notify(),notifyall(),exits synchronized code,wait()
+79,Which method must be defined by a class implementing the java.lang.Runnable interface?,void run(),public void run(),public void start(),void run(int priority),public void run()
+80,Which will contain the body of the thread?,run();,start();,stop();,main();,run();
+81," Which method registers a thread in a thread scheduler?
+",run();,construct();,start();,register();,start();
+82,"Assume the following method is properly synchronized and called from a thread A on an object B:
+
+wait(2000);
+
+After calling this method, when will the thread A become a candidate to get another turn at the CPU?","After thread A is notified, or after two seconds.","After the lock on B is released, or after two seconds.",Two seconds after thread A is notified.,Two seconds after lock B is released.,"After thread A is notified, or after two seconds."
+83,Which of the following will not directly cause a thread to stop?,notify();,wait();,InputStream access,sleep(),notify();
+84,"Which class or interface defines the wait(), notify(),and notifyAll() methods?",object,thread,runnable,class,object
+85,Which is true about an anonymous inner class?,It can extend exactly one class and implement exactly one interface.,It can extend exactly one class and can implement multiple interfaces.,It can extend exactly one class or implement exactly one interface.,It can implement multiple interfaces regardless of whether it also extends a class.,It can extend exactly one class and can implement multiple interfaces.
+86," 
+Which is true about a method-local inner class?",It must be marked final.,It must be marked final.,It can be marked public.,It can be marked static.,It must be marked final.
+87,Which statement is true about a static nested class?,You must have a reference to an instance of the enclosing class in order to instantia,It does not have access to nonstatic members of the enclosing class.,It's variables and methods must be static.,It must extend the enclosing class.,It does not have access to nonstatic members of the enclosing class
+88,Which constructs an anonymous inner class instance?,Runnable r = new Runnable() { };,Runnable r = new Runnable(public void run() { });,Runnable r = new Runnable { public void run(){}};,System.out.println(new Runnable() {public void run() { }});,System.out.println(new Runnable() {public void run() { }});
+89,"What will be the output of the program (when you run with the -ea option) ?
+
+public class Test 
+{  
+    public static void main(String[] args) 
+    {
+        int x = 0;  
+        assert (x > 0) : ""assertion failed""; /* Line 6 */
+        System.out.println(""finished""); 
+    } 
+}",finished,Compilation fails.,An AssertionError is thrown.,An AssertionError is thrown and finished is output.,15 15
+90,"public class Test2 
+{
+    public static int x;
+    public static int foo(int y) 
+    {
+        return y * 2;
+    }
+    public static void main(String [] args) 
+    {
+        int z = 5;
+        assert z > 0; /* Line 11 */
+        assert z > 2: foo(z); /* Line 12 */
+        if ( z < 7 )
+            assert z > 4; /* Line 14 */
+
+        switch (z) 
+        {
+            case 4: System.out.println(""4 "");
+            case 5: System.out.println(""5 "");
+            default: assert z < 10;
+        }
+
+        if ( z < 10 )
+            assert z > 4: z++; /* Line 22 */
+        System.out.println(z);
+    }
+}
+which line is an example of an inappropriate use of assertions?",line 11,line 12,line 14,line 22,
+91," 
+What will be the output of the program?
+
+class PassA 
+{
+    public static void main(String [] args) 
+    {
+        PassA p = new PassA();
+        p.start();
+    }
+
+    void start() 
+    {
+        long [] a1 = {3,4,5};
+        long [] a2 = fix(a1);
+        System.out.print(a1[0] + a1[1] + a1[2] + "" "");
+        System.out.println(a2[0] + a2[1] + a2[2]);
+    }
+
+    long [] fix(long [] a3) 
+    {
+        a3[1] = 7;
+        return a3;
+    }
+}",12 15,15 15,3 4 5 3 7 5,3 7 5 3 7 5,
+92," 
+What will be the output of the program?
+
+class Test 
+{
+    public static void main(String [] args) 
+    {
+        Test p = new Test();
+        p.start();
+    }
+
+    void start() 
+    {
+        boolean b1 = false;
+        boolean b2 = fix(b1);
+        System.out.println(b1 + "" "" + b2);
+    }
+
+    boolean fix(boolean b1) 
+    {
+        b1 = true;
+        return b1;
+    }
+}",true true,false false,true false,false true,false true
+93,"public void foo( boolean a, boolean b)
+{ 
+    if( a ) 
+    {
+        System.out.println(""A""); /* Line 5 */
+    } 
+    else if(a && b) /* Line 7 */
+    { 
+        System.out.println( ""A && B""); 
+    } 
+    else /* Line 11 */
+    { 
+        if ( !b ) 
+        {
+            System.out.println( ""notB"") ;
+        } 
+        else 
+        {
+            System.out.println( ""ELSE"" ) ; 
+        } 
+    } 
+}","If a is true and b is true then the output is ""A && B""","If a is true and b is false then the output is ""notB""","If a is false and b is true then the output is ""ELSE""","If a is false and b is false then the output is ""ELSE""","If a is false and b is true then the output is ""ELSE"""
+94,"public void test(int x) 
+{ 
+    int odd = 1; 
+    if(odd) /* Line 4 */
+    {
+        System.out.println(""odd""); 
+    } 
+    else 
+    {
+        System.out.println(""even""); 
+    } 
+}
+Which statement is true?",Compilation fails.,"""odd"" will always be output.","""even"" will always be output.","""odd"" will be output for odd values of x, and ""even"" for even values.",Compilation fails.
+95,"public class While 
+{
+    public void loop() 
+    {
+        int x= 0;
+        while ( 1 ) /* Line 6 */
+        {
+            System.out.print(""x plus one is "" + (x + 1)); /* Line 8 */
+        }
+    }
+}
+Which statement is true?","There is a syntax error on line 1.
+",There are syntax errors on lines 1 and 6.,"There are syntax errors on lines 1, 6, and 8.",There is a syntax error on line 6.,There is a syntax error on line 6.
+96," 
+Suppose that you would like to create an instance of a new Map that has an iteration order that is the same as the iteration order of an existing instance of a Map. Which concrete implementation of the Map interface should be used for the new instance?",TreeMap,HashMap,LinkedHashMap,The answer depends on the implementation of the existing instance.,LinkedHashMap
+97,"Which class does not override the equals() and hashCode() methods, inheriting them directly from class Object?",java.lang.String,java.lang.Double,java.lang.StringBuffer,java.lang.Character,java.lang.StringBuffer
+98," 
+Which collection class allows you to grow or shrink its size and provides indexed access to its elements, but whose methods are not synchronized?",java.util.HashSet,java.util.LinkedHashSet,java.util.List,java.util.ArrayList,java.util.ArrayList
+99,You need to store elements in a collection that guarantees that no duplicates are stored and all elements can be accessed in natural order. Which interface provides that capability?,java.util.Map,java.util.Set,java.util.List,java.util.Collection,java.util.Set
+100,Which interface does java.util.Hashtable implement?,Java.util.Map,Java.util.List,Java.util.HashTable,Java.util.Collection,Java.util.Map

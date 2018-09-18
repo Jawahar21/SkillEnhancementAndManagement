@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+    .container{
+        background-color: white;
+        color: black;
+    }
+    body{
+      background: url("../static/bg.png") no-repeat center center fixed;
+      background-size: cover;
+      color: black;
+      padding-bottom: 50px;
+    }
+    .highlight{
+      background-color: #05143d;
+      color: white;
+    }
+    .jumbotron{
+      font-size: 20px;
+    }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <div class="jumbotron">
+              <h1>Skills</h1>
+    </div>
+{% if skills %}
+      <table class="table">
+        <thead>
+          <tr class="highlight">
+            <th>Skill</th>
+            <th>Proficiency</th>
+            <th>Result</th>
+        </tr>
+        </thead>
+       {%for i in skills%}
+          <tbody>
+            <tr>
+                <td>{{i[0]}}</td>
+                <td>{{i[1]}}</td>
+                <td>{{i[2]}}</td>
+            </tr>
+       {% endfor %}
+          </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="jumbotron container">
+<center><h2 >{{message}}</h2></center>
+</div>
+{%endif%}
+</body>
+</html>

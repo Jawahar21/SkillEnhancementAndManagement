@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Theme Made By www.w3schools.com - No Copyright -->
+        <title>Employee Logged in</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style>
+            body {
+                overflow: hidden;
+                background-image: url("/static/associatehome.jpg");
+                background-size: cover;
+            }
+            p {font-size: 16px;}
+            .margin {margin-bottom: 45px;}
+            .bg-4 {
+                margin-top: 700px;
+                background-color: #2f2f2f; /* Black Gray */
+                color: #fff;
+            }
+            .container-fluid {
+                padding-top: 20px;
+            }
+            .navbar {
+                background-image: url("/static/managerbg.jpg");
+                padding-top: 15px;
+                padding-bottom: 10px;
+                border: 0;
+                border-radius: 0;
+                margin-bottom: 0;
+                font-family: sans-serif;
+                font-size: 15px;
+                letter-spacing: 5px;
+            }
+            .navbar-nav  li button:hover {
+                color: blue;
+            }
+            .navbar-nav  li button{
+                margin-left: 5px;
+                width:125px;
+            }
+            .s1{
+                font-size: 17px;
+                font-family: serif,arial;
+                color:#2f2f2f;
+                margin-top: 15px;
+            }
+            #profileframe,#skillsframe,#testhistoryframe,#taketestframe{
+                width: 100%;
+                position: fixed;
+                height: 90%;
+            }
+            .upper{
+                width: 100%;
+            }
+             #myNavbar{
+               margin-top: 20px;
+            }
+            #white{
+              color: white;
+              padding-right: 10px;
+            }
+            #logo{
+              margin-bottom: 25px;
+              padding-bottom: 5px;
+            }
+            .navbar-brand{
+              padding: 0px;
+              padding-left: 10px;
+            }
+        </style>
+    </head>
+    <body>
+
+        <!-- Navbar -->
+        <div class="upper">
+            <nav class="navbar navbar-default">
+              <a  class="navbar-brand" href="#">
+                <img id='logo' src="/static/logo_transparent.png" width="70" height="70" alt="">
+              </a>
+              <div style="float:right;">
+               <p id='white'>WELCOME:{{name}}</p>
+            </div>
+                <div class="container-fluid">
+
+                  <div class="navbar-header navbar-right" >
+                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                      </button>
+                  </div>
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><button type="button" class="btn btn-outline-secondary" onclick="showprofile()">Profile</button></li>
+                            <li><button type="button" class="btn btn-outline-secondary" onclick="showaddskill()">Add Skill</button></li>
+                            <li><button type="button" class="btn btn-outline-secondary" onclick="showtesthistory()">Test History</button></li>
+                            <li><button type="button" class="btn btn-outline-secondary" onclick="showtaketest()">Take Test</button></li>
+                            <li><button type="button" class="btn btn-outline-secondary" onclick="location.href = '/logout';">Logout</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+
+        <div style="display: none" class="showprofile" id="showprofile">
+            <iframe id="profileframe"></iframe>
+        </div>
+        <div style="display: none" class="showaddskill" id="showaddskill">
+            <iframe  id="skillsframe" ></iframe>
+        </div>
+        <div style="display: none" class="showtesthistory" id="showtesthistory">
+            <iframe  id="testhistoryframe" ></iframe>
+        </div>
+        <div style="display: none" class="showtaketest" id="showtaketest">
+            <iframe  id="taketestframe" ></iframe>
+        </div>
+
+
+    </body>
+    <script>
+        function showprofile(){
+            var profilepage=document.getElementById("showprofile");
+            var skillpage=document.getElementById("showaddskill");
+            var historypage=document.getElementById("showtesthistory");
+            var taketestpage=document.getElementById("showtaketest");
+            if (profilepage.style.display === "none") {
+                skillpage.style.display="none";
+                historypage.style.display="none";
+                taketestpage.style.display="none";
+                profilepage.style.display = "block";
+            }
+            document.getElementById("profileframe").setAttribute("src","/profilepage")
+        }
+        function showaddskill(){
+            var profilepage=document.getElementById("showprofile");
+            var skillpage=document.getElementById("showaddskill");
+            var historypage=document.getElementById("showtesthistory");
+            var taketestpage=document.getElementById("showtaketest");
+            if (skillpage.style.display === "none") {
+                historypage.style.display="none";
+                taketestpage.style.display="none";
+                profilepage.style.display = "none";
+                skillpage.style.display="block";
+            }
+            document.getElementById("skillsframe").setAttribute("src","/skillspage")
+        }
+        function showtesthistory(){
+            var profilepage=document.getElementById("showprofile");
+            var skillpage=document.getElementById("showaddskill");
+            var historypage=document.getElementById("showtesthistory");
+            var taketestpage=document.getElementById("showtaketest");
+            if (historypage.style.display === "none") {
+                skillpage.style.display="none";
+                taketestpage.style.display="none";
+                profilepage.style.display = "none";
+                historypage.style.display="block";
+            }
+            document.getElementById("testhistoryframe").setAttribute("src","/testhistorypage")
+
+        }
+        function showtaketest(){
+            var profilepage=document.getElementById("showprofile");
+            var skillpage=document.getElementById("showaddskill");
+            var historypage=document.getElementById("showtesthistory");
+            var taketestpage=document.getElementById("showtaketest");
+            if (taketestpage.style.display === "none") {
+                skillpage.style.display="none";
+                historypage.style.display="none";
+                profilepage.style.display = "none";
+                taketestpage.style.display="block";
+            }
+            document.getElementById("taketestframe").setAttribute("src","/taketestpage")
+        }
+
+    </script>
+
+
+</html>

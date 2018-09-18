@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Admin Logged in</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style>
+            body {
+                overflow: hidden;
+                background-image: url("/static/associatehome.jpg");
+                background-size: cover;
+            }
+            p {font-size: 16px;}
+            .margin {margin-bottom: 45px;}
+            .bg-4 {
+                margin-top: 700px;
+                background-color: #2f2f2f; /* Black Gray */
+                color: #fff;
+            }
+            .container-fluid {
+                padding-top: 20px;
+            }
+            .navbar {
+                background-image: url("/static/managerbg.jpg");
+                padding-top: 15px;
+                padding-bottom: 10px;
+                border: 0;
+                border-radius: 0;
+                margin-bottom: 0;
+                font-family: sans-serif;
+                font-size: 15px;
+                letter-spacing: 5px;
+            }
+            .navbar-nav  li a:hover {
+                color: green;
+            }
+            .navbar-nav  li button{
+                margin-left: 5px;
+                width:130px;
+            }
+            #addquestionbankframe,#teammanagementframe,#employeedetailsframe,#recruitmentframe{
+                width: 100%;
+                position: fixed;
+                height: 90%;
+            }
+            .upper{
+                width: 100%;
+            }
+            #myNavbar{
+              margin-top: 20px;
+            }
+            #white{
+             color: white;
+             padding-right: 10px;
+            }
+            #logo{
+              margin-bottom: 25px;
+              padding-bottom: 5px;
+            }
+            .navbar-brand{
+              padding: 0px;
+              padding-left: 10px;
+            }
+        </style>
+    </head>
+    <body>
+
+      <div class="upper">
+        <nav class="navbar navbar-default">
+          <a class="navbar-brand" href="#">
+            <img id='logo' src="/static/logo_transparent.png" width="70" height="70" alt="">
+          </a>
+          <div style="float:right;">
+           <p id='white'>Welcome:{{name}}</p>
+        </div>
+            <div class="container-fluid">
+                <div class="navbar-header navbar-right">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><button type="button" class="btn btn-outline-secondary" onclick="recruitment()">Recruitment</button></li>
+                        <li><button type="button" class="btn btn-outline-secondary" onclick="showaddquesionbank()">Question bank</button></li>
+                        <li><button type="button" class="btn btn-outline-secondary" onclick="showteammanagement()">Teams</button></li>
+                        <li><button type="button" class="btn btn-outline-secondary" onclick="showemployeedetails()">Employee Details</button></li>
+                        <li><button type="button" class="btn btn-outline-secondary" onclick="location.href = '/logout';">Logout</button></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+      </div>
+      <div style="display: none" class="recruitment" id="recruitment">
+          <iframe id="recruitmentframe" ></iframe>
+      </div>
+        <div style="display: none" class="showaddquesionbank" id="showaddquesionbank">
+            <iframe id="addquestionbankframe" ></iframe>
+        </div>
+        <div style="display: none" class="showteammanagement" id="showteammanagement">
+            <iframe  id="teammanagementframe" ></iframe>
+        </div>
+        <div style="display: none" class="showemployeedetails" id="showemployeedetails">
+            <iframe  id="employeedetailsframe"></iframe>
+        </div>
+
+
+    </body>
+    <script>
+        function showaddquesionbank(){
+            var addquestionbank=document.getElementById("showaddquesionbank");
+            var teammanagement=document.getElementById("showteammanagement");
+            var employeedetails=document.getElementById("showemployeedetails");
+            var recruitment=document.getElementById("recruitment");
+            if (addquestionbank.style.display === "none") {
+                teammanagement.style.display="none";
+                employeedetails.style.display="none";
+                recruitment.style.display="none";
+                addquestionbank.style.display="block";
+            }
+            document.getElementById("addquestionbankframe").setAttribute("src","/addquestionbank")
+        }
+        function showteammanagement(){
+            var addquestionbank=document.getElementById("showaddquesionbank");
+            var teammanagement=document.getElementById("showteammanagement");
+            var employeedetails=document.getElementById("showemployeedetails");
+            var recruitment=document.getElementById("recruitment");
+            if (teammanagement.style.display === "none") {
+                employeedetails.style.display="none";
+                addquestionbank.style.display="none";
+                recruitment.style.display="none";
+                teammanagement.style.display="block";
+            }
+            document.getElementById("teammanagementframe").setAttribute("src","/teams")
+        }
+        function showemployeedetails(){
+            var addquestionbank=document.getElementById("showaddquesionbank");
+            var teammanagement=document.getElementById("showteammanagement");
+            var employeedetails=document.getElementById("showemployeedetails");
+            var recruitment=document.getElementById("recruitment");
+            if (employeedetails.style.display === "none") {
+                teammanagement.style.display="none";
+                addquestionbank.style.display="none";
+                recruitment.style.display="none";
+                employeedetails.style.display="block";
+            }
+            document.getElementById("employeedetailsframe").setAttribute("src","/employeedetailspage")
+        }
+        function recruitment(){
+            var addquestionbank=document.getElementById("showaddquesionbank");
+            var teammanagement=document.getElementById("showteammanagement");
+            var employeedetails=document.getElementById("showemployeedetails");
+            var recruitment=document.getElementById("recruitment");
+            if (recruitment.style.display === "none") {
+                teammanagement.style.display="none";
+                addquestionbank.style.display="none";
+                employeedetails.style.display="none";
+                recruitment.style.display="block";
+            }
+            document.getElementById("recruitmentframe").setAttribute("src","/recruitment")
+        }
+
+    </script>
+
+</html>

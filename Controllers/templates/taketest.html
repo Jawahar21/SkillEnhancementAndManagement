@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+    .container{
+        background-color: white;
+        color: black;
+    }
+    body{
+      background: url("../static/bg.png") no-repeat center center fixed;
+      background-size: cover;
+      color: black;
+      padding-bottom: 50px;
+    }
+    .highlight{
+      background-color: #05143d;
+      color: white;
+    }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <div class="jumbotron">
+              <h1>Take Test</h1>
+              <p>We'd love to help you enhance your skills. Learn & Evolve!!!</p>
+    </div>
+{% if testdetails %}
+
+      <h2>Tests</h2>
+      <table class="table">
+        <thead>
+          <tr class="highlight">
+            <th>Skill</th>
+            <!-- <th>Test Date</th> -->
+            <th>Test Link</th>
+          </tr>
+        </thead>
+       {%for i in testdetails%}
+          <tbody>
+            <tr>
+                <td>{{i[0]}}</td>
+                <!-- <td>{{i[2]}}</td> -->
+                <td><form name='form' action="/taketestpage" method="post"  target="_blank">
+                <button type="submit" name="testname" id={{i[1]}} value={{i[1]}}>Take Test</button>
+                </form></td>
+            </tr>
+       {% endfor %}
+          </tbody>
+        </table>
+    </div>
+    {% else %}
+<center><h2 >No test generated</h2></center>
+{% endif %}
+</body>
+<script>
+  $(document).on('submit','[name="form"]',function(){
+      window.setTimeout(function(){location.reload()},3000)
+  });
+</script>
+</html>

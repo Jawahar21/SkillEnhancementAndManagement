@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Theme Made By www.w3schools.com - No Copyright -->
+        <title>Manager Logged in</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style>
+            body {
+                overflow: hidden;
+                background-image: url("/static/associatehome.jpg");
+                background-size: cover;
+            }
+            p {font-size: 16px;}
+            .margin {margin-bottom: 45px;}
+            .bg-4 {
+                margin-top: 700px;
+                background-color: #2f2f2f; /* Black Gray */
+                color: #fff;
+            }
+            .container-fluid {
+                padding-top: 20px;
+            }
+            .navbar {
+                background-image: url("/static/managerbg.jpg");
+                padding-top: 15px;
+                padding-bottom: 10px;
+                border: 0;
+                border-radius: 0;
+                margin-bottom: 0;
+                font-family: sans-serif;
+                font-size: 15px;
+                letter-spacing: 5px;
+            }
+            .navbar-nav  li a:hover {
+                color: green;
+            }
+            .navbar-nav  li button{
+                margin-left: 5px;
+                width:135px;
+            }
+            #notificationsframe,#profileframe,#employeedetailsframe,#conducttestframe{
+                width: 100%;
+                position: fixed;
+                height: 90%;
+            }
+            .upper{
+                width: 100%;
+            }
+            #myNavbar{
+              margin-top: 20px;
+           }
+           #white{
+             color: white;
+             padding-right: 10px;
+           }
+           #logo{
+             margin-bottom: 25px;
+             padding-bottom: 5px;
+           }
+           .navbar-brand{
+             padding: 0px;
+             padding-left: 10px;
+           }
+        </style>
+    </head>
+    <body>
+
+      <div class="upper">
+        <nav class="navbar navbar-default">
+          <a class="navbar-brand" href="#">
+            <img id='logo' src="/static/logo_transparent.png" width="70" height="70" alt="">
+          </a>
+          <div style="float:right;">
+           <p id='white'>WELCOME:{{name}}</p>
+        </div>
+            <div class="container-fluid">
+                <div class="navbar-header navbar-right">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><button type="button" class="btn btn-outline-secondary" onclick="shownotification()">Notifications</button></li>
+                        <li><button type="button" class="btn btn-outline-secondary" onclick="showprofile()">Profile</button></li>
+                        <li><button type="button" class="btn btn-outline-secondary" onclick="showemployeedetails()">Employee Details</button></li>
+                        <li><button type="button" class="btn btn-outline-secondary" onclick="showconducttest()" >Setup Test</button></li>
+                        <!-- <li><button type="button" class="btn btn-outline-secondary" onclick="showteams()">Teams</button></li> -->
+                        <li><button type="button" class="btn btn-outline-secondary" onclick="location.href = '/logout';">Logout</button></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+      </div>
+
+        <div style="display: none" class="shownotification" id="shownotification">
+            <iframe id="notificationsframe" ></iframe>
+        </div>
+        <div style="display: none" class="showprofile" id="showprofile">
+            <iframe  id="profileframe" ></iframe>
+        </div>
+        <div style="display: none" class="showemployeedetails" id="showemployeedetails">
+            <iframe  id="employeedetailsframe"></iframe>
+        </div>
+        <div style="display: none" class="showconducttest" id="showconducttest">
+            <iframe  id='conducttestframe' ></iframe>
+        </div>
+
+    </body>
+    <script>
+        function shownotification(){
+            var notification=document.getElementById("shownotification");
+            var profile=document.getElementById("showprofile");
+            var employeedetails=document.getElementById("showemployeedetails");
+            var conducttest=document.getElementById("showconducttest");
+            if (notification.style.display === "none") {
+                profile.style.display="none";
+                employeedetails.style.display="none";
+                conducttest.style.display = "none";
+                notification.style.display="block";
+            }
+            document.getElementById("notificationsframe").setAttribute("src","/notificationspage")
+        }
+        function showprofile(){
+            var notification=document.getElementById("shownotification");
+            var profile=document.getElementById("showprofile");
+            var employeedetails=document.getElementById("showemployeedetails");
+            var conducttest=document.getElementById("showconducttest");
+            if (profile.style.display === "none") {
+                employeedetails.style.display="none";
+                conducttest.style.display = "none";
+                notification.style.display="none";
+                profile.style.display="block";
+            }
+            document.getElementById("profileframe").setAttribute("src","/profilepage")
+        }
+        function showemployeedetails(){
+            var notification=document.getElementById("shownotification");
+            var profile=document.getElementById("showprofile");
+            var employeedetails=document.getElementById("showemployeedetails");
+            var conducttest=document.getElementById("showconducttest");
+            if (employeedetails.style.display === "none") {
+                profile.style.display="none";
+                conducttest.style.display = "none";
+                notification.style.display="none";
+                employeedetails.style.display="block";
+            }
+            document.getElementById("employeedetailsframe").setAttribute("src","/employeedetailspage")
+        }
+        function showconducttest(){
+            var notification=document.getElementById("shownotification");
+            var profile=document.getElementById("showprofile");
+            var employeedetails=document.getElementById("showemployeedetails");
+            var conducttest=document.getElementById("showconducttest");
+            if (conducttest.style.display === "none") {
+                profile.style.display="none";
+                employeedetails.style.display="none";
+                notification.style.display="none";
+                conducttest.style.display = "block";
+            }
+            document.getElementById("conducttestframe").setAttribute("src","/conducttestpage")
+        }
+
+    </script>
+
+</html>

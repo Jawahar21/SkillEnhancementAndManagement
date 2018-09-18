@@ -1,0 +1,50 @@
+1,"What will be the output of the following code :
+print type(type(int))",type int,type type,Error,0,type type
+2,"What is the output of the following code :
+L = [ a , b , c , d ]
+print """".join(L)",Error,None,abcd,"[‘a’,’b’,’c’,’d’]",abcd
+3,"What is the output of the following segment :
+chr(ord( A ))",A,B,a,Error,A
+4,"What is the output of the following program :
+y = 8
+z = lambda x : x * y
+print z(6)",48,14,64,None of the above,48
+5,What is called when a function is defined inside a class?,Module,Class,Another Function,Method,Method
+6,Which of the following is the use of id() function in python?,Id returns the identity of the object,Every object doesn’t have a unique id,All of the mentioned,None of the mentioned,Id returns the identity of the object
+7,"What is the output of the following program :
+import re
+sentence =  horses are fast 
+regex = re.compile( (?P<animal>\w+) (?P<verb>\w+) (?P<adjective>\w+) )
+matched = re.search(regex, sentence)
+print(matched.groupdict())","{ animal :  horses , verb : are , adjective: fast}","(‘horses’, ‘are’, ‘fast’)",‘horses are fast ,are ,"{‘animal’: ‘horses’, ‘verb’: ‘are’, ‘adjective’: ‘fast’}"
+8,"Suppose list1 is [3, 4, 5, 20, 5, 25, 1, 3], what is list1 after list1.pop(1)?","[3, 4, 5, 20, 5, 25, 1, 3]","[1, 3, 3, 4, 5, 5, 20, 25]","[3, 5, 20, 5, 25, 1, 3]","[1, 3, 4, 5, 20, 5, 25]","[3, 5, 20, 5, 25, 1, 3]"
+9,time.time() returns ________,"
+the current time",the current time in milliseconds,the current time in milliseconds since midnight,"the current time in milliseconds since midnight, January 1, 1970 GMT (the Unix time)","the current time in milliseconds since midnight, January 1, 1970 GMT (the Unix time)"
+10,"What is the output of the following code :
+print 9//2",4.5,4,0,error,4
+11,Which function overloads the >> operator?,more(),gt(),ge(),None of the above,None of the above
+12,Which operator is overloaded by the or() function?,||,|,//,/,|
+13,"What is the output of the following program :
+i = 0
+while i < 3:
+       print i
+       i++
+       print i+1",0 2 1 3 2 4,0 1 2 3 4 5,Error,1 0 2 4 3 5,Error
+14,Which of these is not a core data type?,Lists,Dictionary,Tuples,Class,Class
+15,"What data type is the object below ? L = [1, 23, ‘hello’, 1]",Lists,Dictionary,Tuples,Array,List
+16,Which of the following function convert a string to a float in python?,"int(x [,base])","long(x [,base] )",float(x),str(x),float(x)
+17,"Which of the following statement(s) is TRUE?
+A hash function takes a message of arbitrary length and generates a fixed length code.
+A hash function takes a message of fixed length and generates a code of variable length.
+A hash function may give the same hash value for distinct messages.",I only,II and III only,I and III only,II only,I and III only
+18,"1. What is the output of the code snippet shown below?
+
+X=”hi”
+print(“05d”%X)",00000hi,000hi,hi000,error,error
+19,"Consider the snippet of code shown below and predict the output.
+
+X=”san-foundry”
+print(“%56s”,X)",56 blank spaces before san-foundry,56 blank spaces before san and foundry,56 blank spaces after san-foundry,no change,56 blank spaces before san-foundry
+20,"What is the output of the following expression if x=456?
+
+print(""%-06d""%x)",450006,456000,456,error,456

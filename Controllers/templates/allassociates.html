@@ -1,0 +1,90 @@
+<html>
+  <head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <style>
+      .container{
+          background-color: white;
+          color: black;
+      }
+      body{
+        background: url("../static/bg.png") no-repeat center center fixed;
+        background-size: cover;
+        color: black;
+        padding-bottom: 50px;
+      }
+      .highlight{
+        background-color: #05143d;
+        color: white;
+      }
+      </style>
+  </head>
+  <body>
+    <div class="container">
+      {% if details %}
+      <div class="jumbotron">
+          <h2>Employees</h2>
+        </div>
+        <table class="table">
+          <thead>
+            <tr class="highlight">
+              <th>Employee ID</th>
+              <th>Name</th>
+              <th>Role</th>
+              <th>Skills</th>
+              <th>Proficiency</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+         {%for i in details %}
+            <tbody>
+              <tr>
+                  <td>{{i[0][0]}}</td>
+                  <td>{{i[0][1]}}</td>
+                  <td>{{i[0][2]}}</td>
+                  {% if i[1] %}
+                  <td>
+                  {% for skill in i[1] %}
+                    <li>{{skill[0]}}</li>
+                  {% endfor %}
+                  {% else %}
+                  <td> ------</td>
+                  {% endif %}
+                </td>
+                {% if i[1] %}
+                <td>
+                {% for skill in i[1] %}
+                  <li>{{skill[1]}}</li>
+                {% endfor %}
+                </td>
+                {% else %}
+                <td> ------</td>
+                {% endif %}
+                {% if i[1] %}
+                <td>
+                {% for skill in i[1] %}
+                  <li>{{skill[2]}}</li>
+                {% endfor %}
+                </td>
+                {% else %}
+                <td> ------</td>
+                {% endif %}
+
+
+
+              </tr>
+         {% endfor %}
+            </tbody>
+          </table>
+      </div>
+      {% else %}
+      <div class="jumbotron">
+          <center><h2 >No User found</h2></center>
+      </div>
+      {% endif %}
+  </body>
+</html>

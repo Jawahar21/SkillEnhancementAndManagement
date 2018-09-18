@@ -1,0 +1,133 @@
+<html lang="en">
+<head>
+  <title>Online Test</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  h1{
+    color: blue;
+    text-align: center;
+  }
+  .header{
+    color: green;
+  }
+  #timer{
+      color:red;
+  }
+ .affix {
+      top: 0;
+      width: 93%;
+      position: fixed;
+      z-index: 9999 !important;
+  }
+      .h{
+          float: left;
+      }
+      #rightbutton{
+        /* position: fixed; */
+        margin:10px;
+        float: right;
+      }
+  </style>
+</head>
+<body>
+  <h1> online test</h1>
+  <div class="container" >
+    <nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="197">
+    <ul class="nav navbar-nav">
+    <li class="active">
+        <li class="h"><a >Time Left:  <span id="timer">02:00</span> seconds!</a></li>
+    </ul>
+    <button id='rightbutton' onclick="myFunction()">Submit</button>
+    </nav>
+   <div class="jumbotron">
+    <form name="myForm" method='post'>
+    {% for var in questions %}
+      {% autoescape false %}
+        <br/>
+        <h4>
+          <span id="no"> {{loop.index}})</span> {{ var[1] }}
+        </h4>
+        <b>Options:</b>
+        <br/><input type="radio" name="{{var[0]}}" value="{{var[2]}}">{{ var[2] }}
+        <br/><input type="radio" name="{{var[0]}}" value="{{var[3]}}">{{ var[3] }}
+        <br/><input type="radio" name="{{var[0]}}" value="{{var[4]}}">{{ var[4] }}
+        <br/><input type="radio" name="{{var[0]}}" value="{{var[5]}}">{{ var[5] }}<br/><br/>
+      {% endautoescape %}
+    {% endfor %}
+      <button onclick="myFunction()">Submit</button>
+</form>
+
+</div>
+</div>
+</body>
+
+<script>
+    window.onload = function(){
+      test({{ testname|safe }});
+       var min = 0;
+       var sec = 30;
+       var duration = 3;
+       var x=setInterval(function(){
+         document.getElementById("timer").innerHTML = min +" : " + sec ;
+         sec--;
+         duration--;
+         if(sec == 0 )
+         {
+
+             min--;
+             sec = 60;
+             if ( duration < 0)
+             {
+               clearInterval(x);
+               myFunction();
+               return
+            }
+        }
+      },1000);
+    }
+
+    var useranswers = [],flag = 0,i,j;
+    function myFunction() {
+      for(i=0;i<=document.myForm.elements.length-4;i=i+4){
+        flag=0;
+        for(j=i;j<i+4;j++){
+          if(document.myForm.elements[j].checked){
+              useranswers.push(document.myForm.elements[j].value);
+              flag=1;
+              break;
+          }
+        }
+        if(flag == 0){
+           useranswers.push(undefined);
+        }
+      }
+      send({{testname | safe}});
+    }
+    function test(testname){
+      //document.getElementById('testname').innerHTML = testname;
+    }
+    function send(testname){
+      var http = new XMLHttpRequest();
+      var url = "/gettestresults";
+      var params={ "useranswers": useranswers,
+                    "testname" : testname};
+       params = JSON.stringify(params);
+       http.open("POST", url, true);
+       http.setRequestHeader("Content-type", "application/json");
+       http.onreadystatechange = function() {//Call a function when the state changes.
+           if(http.readyState == 4 && http.status == 200) {
+               message=http.responseText;
+               alert(message);
+               window.location.href = "/testhistorypage";
+           }
+       }
+       http.send(params);
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,43 @@
+<html>
+    <head>
+
+        <meta charset="utf-8">
+        <title>Admin Login</title>
+
+        <!-- Google Fonts -->
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
+
+        <!-- <link rel="stylesheet" href="/static/animate.css"> -->
+        <!-- Custom Stylesheet -->
+        <link rel="stylesheet" href="/static/style1.css">
+    </head>
+    <body>
+      <div class="container">
+          <!-- <div class="top">
+              <h1 id="title" class="hidden"><span id="logo">Manager <span>Assist</span></span></h1>
+          </div> -->
+          <div class="login-box animated fadeInUp">
+              <div class="box-header">
+                  <h2>Remove Member</h2>
+              </div>
+              <form action="/removemember" method="post">
+                <label for="teamname">Team Name</label>
+                <br/>
+                <input type="text" required id="teamname" name="teamname">
+                <br/>
+                <label for="eid">Employee Id</label>
+                <br/>
+                <input type="text" required id="eid" name="eid">
+                <br/>
+                <div id="f1">
+                    {{message}}
+                </div>
+                <br/>
+                <button type="submit" >Submit</button>
+                <br/>
+              </form>
+              <br/>
+          </div>
+      </div>
+    </body>
+</html>

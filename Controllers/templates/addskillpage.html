@@ -1,0 +1,146 @@
+<!-- <!DOCTYPE html> -->
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <title>Employee Login</title>
+
+        <!-- Google Fonts -->
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
+
+        <!-- <link rel="stylesheet" href="/static/animate.css"> -->
+        <!-- Custom Stylesheet -->
+        <link rel="stylesheet" href="/static/style1.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <!-- <div class="top">
+                <h1 id="title" class="hidden"><span id="logo">Manager <span>Assist</span></span></h1>
+            </div> -->
+            <div class="login-box animated fadeInUp">
+                <div class="box-header">
+                    <h2>Add Skills</h2>
+                </div>
+                <form action="/skillspage" method="post">
+                    <br/>
+                    <label>Competency</label>
+                    <br/>
+                    <select name='competency' id='competency' required>
+                        <option value="please select an option">Please select</option>
+                        <option value=1>Open Source</option>
+                        <option value=2>Microsoft</option>
+                        <option value=3>Web Technologies</option>
+                    </select>
+                    <br/>
+                    <div id="other" style="display: none" >
+                        <br/>
+                        <label>Other Skill:</label>
+                        <br/>
+                        <input type="text" id='otherskill' name="otherskill"  >
+                    </div>
+                    <br/>
+                    <!-- {% if message: %} -->
+                    <div id="f1">
+                        {{message}}
+                    </div>
+                    <!-- {% endif %} -->
+                    <br/>
+                    <button type="submit" >Add Skill</button>
+                    <br/>
+                    <!--<a href="#"><p class="small">Forgot your password?</p></a>
+-->
+                </form>
+                <br/>
+            </div>
+        </div>
+        <script>
+        //on competency dropdown change
+        $( "#competency" ).change(function() {
+          $('#sklabel').remove();
+          $('#skillsdrop').remove();
+          $('#f1').remove();
+          var cid = document.getElementById('competency').value;
+          var params = {
+            "cid": cid,
+            "status": "skills"
+          };
+          $.ajax({
+            type: "POST",
+            url: '/skillspage',
+            contentType: "application/json",
+            data: JSON.stringify(params),
+            dataType: "json",
+            success: function(data, status){
+                  skills = data['skills'];
+                  $('#sklabel').remove();
+                  $('#skillsdrop').remove();
+                  $('#f1').remove();
+                  var combo = $("<select id='skillsdrop' name='skillsdrop' onchange='displayTextBox()' ></select>");
+
+                  combo.append($("<option>Please select a skill</option>"));
+                  $.each(skills, function (i, el) {
+                      var option = $("<option>"+el+"</option>").attr("value",el);
+                      combo.append(option);
+                    });
+                    combo.append($("<option value='other'>Other</option>"))
+                    $(" <label id='sklabel' for='skillsdrop'><span><br/><br/>Skills<br/></span></label>").insertAfter("#competency")
+                    $( combo ).insertAfter( "#sklabel" );
+
+              }
+          });
+        });
+        function displayTextBox(){
+                console.log("YEs");
+                var otherskill=document.getElementById("skillsdrop");
+                if(otherskill.value=='other'){
+                    var newskill=document.getElementById("other");
+                    newskill.style.display = "block";
+                }
+                else{
+                  var newskill=document.getElementById("other");
+                  newskill.style.display = "none";
+                }
+        }
+
+        // $(document).on('change','#skillsdrop',function(e) {
+        //   e.preventDefault();
+        //   $('#show-data').css('display', 'block');
+        //   var skill = document.getElementById('skillsdrop').value;
+        //   var params = {
+        //     "skill": skill,
+        //     "status": "users"
+        //   };
+        //   $.ajax({
+        //     type: "POST",
+        //     url: '/createteam',
+        //     contentType: "application/json",
+        //     data: JSON.stringify(params),
+        //     dataType: "json",
+        //     success: function(data, status){
+        //           users = data['users'];
+        //           //$('[name="userscheck"]').remove();
+        //           //$('[name="content"]').remove();
+        //           $('#table-content').empty();
+        //           //$("<label id='userlabel'><span><br/><br/>Select Members<br/></span></label>").insertAfter("#skillsdrop")
+        //           var str = "<tr><th>Select</th><th>EmployeeId</th><th>Name</th><th>Role</th></tr>"
+        //           $("#table-content").append(str)
+        //           $.each(users,function (i,val) {
+        //               console.log(val)
+        //                var str1 = $("<tr><td><input type='checkbox' name='userscheck'></td>"+"<td>"+val[0]+"</td><td> "+val[1]+"</td><td> "+val[2]+"</td></tr><br/>").attr("value",val[0]);
+        //                console.log(str1);
+        //                $("#table-content").append(str1)
+        //           });
+        //           //$("#userlabel").append(str)
+        //           //$(str).insertAfter("#userlabel");
+        //           var submit = document.getElementById('submit');
+        //           if (submit.style.display === "none") {
+        //               submit.style.display = 'block';
+        //           }
+        //       }
+        //   });
+        // });
+        </script>
+    </body>

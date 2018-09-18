@@ -1,0 +1,112 @@
+<html>
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <style>
+    body{
+      background-color: white;
+      font-size: 16px;
+    	font-family: 'Lato', sans-serif;
+    	font-weight: 300;
+      padding-bottom: 30px;
+   }
+   .skill,{
+     width:50%;
+     background-color: white;
+   }
+   .container{
+     width:90%;
+   }
+   .form-control{
+     width:150px;
+   }
+   .file{
+     float:left;
+   }
+   .selectbox{
+     float:left;
+     margin-left: 40%;
+   }
+   .clearfix{
+    clear:both
+    }
+    .highlight{
+      background-color: #05143d;
+      color: white;
+    }
+   input[type=submit] {
+        background-color: #05143d;
+        border: none;
+        color: white;
+        padding: 8px 32px;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+    img{
+      width:100%;
+    }
+
+
+  </style>
+</head>
+   <body>
+     <div class="container">
+     <p><b>The [.csv] comma dilimiter spreadsheet file should be in following format:</b></p>
+     <img src="/static/Screenshot.png">
+     <br/>
+     <br/>
+     <br/>
+      <b><p>The last index of questions in each skill</p></b>
+
+      <div class="skill">
+      <table class="table">
+      <thead>
+        <tr class="highlight">
+            {% for skill in details %}
+              <th>{{skill[0]}}</th>
+            {% endfor %}
+        </tr>
+      </thead>
+     </tbody>
+        <tr>
+            {% for skill in details %}
+              <td>{{skill[1]}}</td>
+            {% endfor %}
+     </tr>
+   </body>
+    </table>
+  </div>
+      <form action = "/addquestionbank" method = "POST"
+         enctype = "multipart/form-data">
+         <div class="file">
+           <br/>
+         <input type = "file" name = "file" required/>
+       <br/>
+       </div>
+         <div class="selectbox">
+         <label>Select Skill Name</label>
+         <br/>
+         <select class="form-control" name='skill' id='skill' required >
+             <option value="please select an option">Please select</option>
+             {% for skill in skills %}
+             <option value='{{skill[0]}}'>{{skill[0]}}</option>
+             {% endfor %}
+         </select>
+       </div>
+       <div class="clearfix"></div>
+        <br/>
+        {% if message %}
+          {{message}}<br/>
+        {% endif %}
+        <div class="buton">
+         <input type = "submit"/></div>
+      </form>
+  </div>
+   </body>
+</html>

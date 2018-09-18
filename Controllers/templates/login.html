@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Log In</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.min.css'>
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300'>
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400,700,300'>
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
+
+    <link rel="stylesheet" href="/static/login_style.css">
+    <style>
+      #black{
+        color:red;
+        font-size: 12px;
+      }
+    </style>
+
+</head>
+
+<body>
+  <div class="signup__container">
+  <div class="container__child signup__thumbnail">
+    <div class="thumbnail__logo">
+    <h1 class="logo__text">S.E.A.M.</h1>
+  </div>
+  <div class="thumbnail__links">
+    <p>A step towards success.</p>
+  </div>
+    <div class="signup__overlay"></div>
+  </div>
+  <div class="container__child signup__form">
+    <form class="margin" action="/login" method="post">
+      <div class="form-group">
+        <label for="emailaddress"><b>Email Address</b></label>
+        <input type="email" required id="emailaddress" name="emailaddress" class="form-control" placeholder="Type Here" required />
+      </div>
+      <div class="form-group">
+        <label for="password"><b>Password</b></label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Type Here" required />
+      </div>
+      <div id="f1">
+        <p id="black">{{message}}</p>
+      </div>
+      <div class="m-t-lg">
+        <ul class="list-inline">
+          <li>
+            <button type="submit" class="btn btn--form">Log In</button>
+          </li>
+        </ul>
+      </div>
+    </form>
+  </div>
+</div>
+
+</body>
+
+</html>

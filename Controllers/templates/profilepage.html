@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            body{
+              background: url("../static/bg.png") no-repeat center center fixed;
+              background-size: cover;
+              color: white;
+              padding-bottom: 50px;
+            }
+            .card {
+                background-color: white;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+                max-width: 800px;
+                margin: auto;
+                text-align: center;
+                font-family: arial;
+                color: black;
+            }
+
+            .title {
+                color: grey;
+                font-size: 18px;
+            }
+            .highlight{
+              background-color: #05143d;
+              color: white;
+            }
+            button {
+                border: none;
+                outline: 0;
+                display: inline-block;
+                padding: 8px;
+                color: white;
+                background-color: #000;
+                text-align: center;
+                cursor: pointer;
+                width: 100%;
+                font-size: 18px;
+            }
+
+            a {
+                text-decoration: none;
+                font-size: 22px;
+                color: black;
+            }
+
+            button:hover, a:hover {
+                opacity: 0.7;
+            }
+
+            .lefti{
+                text-align: left;
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+            .list1{
+                text-align: center;
+                margin-left: 50px;
+            }
+            .image img{
+              width:16%;
+              height:16%;
+              margin-top: 0.75%;
+            }
+        </style>
+    </head>
+    <body>
+      <div class="parent">
+        <h2 style="text-align:center">User Profile</h2>
+
+        <div class="card">
+            <div class="image">
+              <img src="https://cdn0.iconfinder.com/data/icons/superuser-web-kit/512/686909-user_people_man_human_head_person-512.png" alt="UserLogo">
+            </div>
+            <h1>{{details[0][1]}}</h1>
+            <p class="title">{{details[0][4]}}</p>
+            <p><b>Employee Id     : </b>  {{details[0][0]}}</p>
+            <p><b>Email  : </b>  {{details[0][2]}}</p>
+            <p><b>Contact: </b> {{details[0][3]}}</p>
+
+            {% if details[2] %}
+            <p class="lefti"><b>Team Details : </b></p>
+            <li class="lefti"><b>Team Name : </b>  {{details[2][0]}}</li>
+            <!-- <li class="list1"><b>Project   : </b>  {{details[2][1]}}</li> -->
+            <li class="lefti"><b>Competency: </b>  {{details[2][1]}}</li>
+            {% endif %}
+            <br/>
+            {% if details[1] %}
+            <form action="/viewskillspage" method='post' target="_blank">
+              <button type='submit' name='getskills' value='{{details[0][0]}}'>View Skills</button>
+            </form>
+            {% endif %}
+            {% if details[3] %}
+            <br/>
+            <form action="/testhistorypage" method='post' target="_blank">
+              <button type='submit' name='testhistory' value='{{details[0][0]}}'>Test History</button>
+            </form>
+          {%endif%}
+        </div>
+      </div>
+    </body>
+</html>

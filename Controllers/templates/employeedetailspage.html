@@ -1,0 +1,45 @@
+<html>
+    <head>
+
+        <meta charset="utf-8">
+        <title>Employee details</title>
+
+        <!-- Google Fonts -->
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
+
+        <!-- <link rel="stylesheet" href="/static/animate.css"> -->
+        <!-- Custom Stylesheet -->
+        <link rel="stylesheet" href="/static/style1.css">
+    </head>
+    <style>
+        body{
+            background-color: white;
+        }
+        .btn{
+          width : 50%;
+        }
+    </style>
+    <body>
+        <div class="container">
+          <div class="login-box animated fadeInUp">
+              <div class="box-header">
+                  <h2>Enter input</h2>
+              </div>
+            <form action="/employeedetailspage" method="post">
+                <label for="param">Enter Employee ID or Name</label>
+                <br/>
+                <input type="text" id='param' name='param' required>
+                <br/>
+                {% if message %}
+                    {{message}}
+                    <br/>
+                {% endif %}
+                <br/>
+                <button class="btn" type="submit" >Get Details</button>
+                <br/>
+            </form>
+            <button class="btn" onclick="location.href='/allassociates'; ">Employees List</button>
+        </div>
+      </div>
+    </body>
+</html>
